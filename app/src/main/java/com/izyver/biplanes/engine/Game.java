@@ -1,4 +1,4 @@
-package com.izyver.engine;
+package com.izyver.biplanes.engine;
 
 public abstract class Game {
     public volatile boolean isDrawing = false;

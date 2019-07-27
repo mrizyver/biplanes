@@ -1,8 +1,8 @@
-package com.izyver.engine;
+package com.izyver.biplanes.engine;
 
-import com.izyver.engine.threads.GameThread;
-import com.izyver.engine.threads.RenderThread;
-import com.izyver.engine.threads.UpdatedThread;
+import com.izyver.biplanes.engine.threads.GameThread;
+import com.izyver.biplanes.engine.threads.RenderThread;
+import com.izyver.biplanes.engine.threads.UpdatedThread;
 
 public class GameEngine {
 

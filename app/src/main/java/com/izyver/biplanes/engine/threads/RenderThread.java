@@ -1,7 +1,7 @@
-package com.izyver.engine.threads;
+package com.izyver.biplanes.engine.threads;
 
 
-import com.izyver.engine.Game;
+import com.izyver.biplanes.engine.Game;
 
 public class RenderThread extends GameThread{
 
