@@ -28,7 +28,7 @@ public class RenderThread extends Thread{
                 long currentDeltaTime = currentTime - lastTimeUpdate;
                 lastTimeUpdate = currentTime;
                 if (currentDeltaTime >= MAX_DELAY) {
-                    currentDeltaTime = 0;
+                    currentDeltaTime = deltaMillis;
                     Log.w("time for update is very big " + currentDeltaTime);
                 }
                 game.update(currentDeltaTime);

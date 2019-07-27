@@ -1,4 +1,4 @@
-package com.izyver.biplanes;
+package com.izyver.biplanes.game;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +21,7 @@ public class GameActivity extends AppCompatActivity {
         final GameScreen gameScreen = new GameScreen(this);
         setContentView(gameScreen);
         gameEngine = new GameEngine(60, gameScreen);
-        gameEngine.startGame();
+        gameScreen.post(() -> gameEngine.startGame());
     }
 
     @Override

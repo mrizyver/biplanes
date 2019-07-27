@@ -1,10 +1,12 @@
-package com.izyver.biplanes;
+package com.izyver.biplanes.game;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.TextureView;
 import androidx.annotation.Nullable;
 import com.izyver.biplanes.engine.Game;
@@ -36,8 +38,25 @@ public class GameScreen extends TextureView implements Game, TextureView.Surface
 
     //------------------Game--------------------//
 
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int width = getMeasuredWidth();
+        int height = getMeasuredHeight();
+        gameCanvas.setSize(width, height);
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gameCanvas.onTouch(event);
+        return true;
+    }
+
     @Override
     public void onStartGame() {
+        gameCanvas.initialize();
     }
 
     private Canvas mCanvas;

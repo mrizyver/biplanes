@@ -3,6 +3,7 @@ package com.izyver.biplanes;
 import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import com.izyver.biplanes.game.GameActivity;
 
 public class MainActivity extends AppCompatActivity {
 
