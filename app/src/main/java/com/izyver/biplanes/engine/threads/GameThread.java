@@ -45,7 +45,7 @@ public abstract class GameThread extends Thread{
     @Override
     public synchronized void start() {
         if (isRun) return;
-        game.onStart();
+        game.onStartGame();
         isRun = true;
         super.start();
     }

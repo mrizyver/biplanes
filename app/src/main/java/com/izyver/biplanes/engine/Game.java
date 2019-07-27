@@ -1,16 +1,11 @@
 package com.izyver.biplanes.engine;
 
-public abstract class Game {
-    public volatile boolean isDrawing = false;
+public interface Game {
 
-    public final void renderGame(){
-        isDrawing = true;
-        render();
-        isDrawing = false;
-    }
+    void onStartGame();
 
-    public void onStart(){}
-    public abstract void render();
-    public abstract void update(long deltaTime);
+    void render();
+
+    void update(long deltaTime);
 
 }

@@ -3,7 +3,7 @@ package com.izyver.biplanes.engine.threads;
 import com.izyver.biplanes.engine.Game;
 import com.izyver.biplanes.engine.Log;
 
-public class UpdatedThread  extends GameThread{
+public class UpdatedThread extends GameThread {
 
     private long lastTimeUpdate;
 
@@ -16,12 +16,10 @@ public class UpdatedThread  extends GameThread{
         long currentTime = System.currentTimeMillis();
         long currentDeltaTime = currentTime - lastTimeUpdate;
         lastTimeUpdate = currentTime;
-        if (currentDeltaTime >= MAX_DELAY){
+        if (currentDeltaTime >= MAX_DELAY) {
             currentDeltaTime = 0;
             Log.w("time for update is very big " + currentDeltaTime);
         }
-        if (!game.isDrawing){
-            game.update(currentDeltaTime);
-        }
+        game.update(currentDeltaTime);
     }
 }

@@ -11,6 +11,6 @@ public class RenderThread extends GameThread{
 
     @Override
     void update() {
-        game.renderGame();
+        game.render();
     }
 }
