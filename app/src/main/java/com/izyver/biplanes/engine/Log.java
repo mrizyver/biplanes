@@ -6,7 +6,7 @@ public class Log {
     public static final String Debug = "DEBUG";
 
     private static final int DEBUG_LEVEL =      0b0000_0001;
-    private static final int WARNING_LEVEL =     0b0000_0010;
+    private static final int WARNING_LEVEL =    0b0000_0010;
     private static final int ERROR_LEVEL =      0b0000_0100;
 
     private static int allowedLog = DEBUG_LEVEL | WARNING_LEVEL | ERROR_LEVEL;

@@ -35,4 +35,10 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
         gameEngine.resume();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        gameEngine.stop();
+    }
 }
