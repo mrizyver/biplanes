@@ -34,5 +34,15 @@ public class GameEngine {
             renderThread.start();
         }
     }
+
+    public void pause(){
+        updateThread.pause(true);
+        renderThread.pause(true);
+    }
+
+    public void resume(){
+        updateThread.pause(false);
+        renderThread.pause(false);
+    }
 }
 

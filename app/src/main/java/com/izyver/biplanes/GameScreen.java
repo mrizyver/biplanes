@@ -1,16 +1,20 @@
 package com.izyver.biplanes;
 
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.TextureView;
 import androidx.annotation.Nullable;
 import com.izyver.biplanes.engine.Game;
-import com.izyver.biplanes.engine.Log;
 
 public class GameScreen extends TextureView implements Game, TextureView.SurfaceTextureListener {
+
+    private static final String TAG = "GameScreen";
+    private boolean isDrawing = false;
+    private GameCanvas gameCanvas = new BiplaneGame();
+
     public GameScreen(Context context) {
         super(context);
         super.setSurfaceTextureListener(this);
@@ -20,7 +24,6 @@ public class GameScreen extends TextureView implements Game, TextureView.Surface
         super(context, attrs);
         super.setSurfaceTextureListener(this);
     }
-
     public GameScreen(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         super.setSurfaceTextureListener(this);
@@ -31,27 +34,21 @@ public class GameScreen extends TextureView implements Game, TextureView.Surface
         super.setSurfaceTextureListener(this);
     }
 
-    private boolean isDrawing = false;
-    private boolean isSurfaceAvailable = false;
-    private Canvas mCanvas;
-
-    private GameCanvas gameCanvas = new BiplaneGame();
-
     //------------------Game--------------------//
 
     @Override
     public void onStartGame() {
     }
 
+    private Canvas mCanvas;
     @Override
     public void render() {
-        if (!isSurfaceAvailable) {
-            Log.w("Surface view is not available");
-            return;
-        }
         isDrawing = true;
         mCanvas = lockCanvas();
-        if (mCanvas == null) throw new NullPointerException("canvas must be non null");
+        if (mCanvas == null) {
+            Log.w(TAG, "canvas must be non null, surface view is not ready");
+            return;
+        }
         gameCanvas.render(mCanvas);
         unlockCanvasAndPost(mCanvas);
         isDrawing = false;
@@ -67,7 +64,7 @@ public class GameScreen extends TextureView implements Game, TextureView.Surface
 
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-        isSurfaceAvailable = true;
+
     }
 
     @Override
@@ -77,7 +74,6 @@ public class GameScreen extends TextureView implements Game, TextureView.Surface
 
     @Override
     public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
-        isSurfaceAvailable = false;
         return false;
     }
 

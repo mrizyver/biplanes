@@ -11,6 +11,10 @@ public class GameActivity extends AppCompatActivity {
 
     private GameEngine gameEngine;
 
+    public static Intent newIntent(Context context) {
+        return new Intent(context, GameActivity.class);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +24,15 @@ public class GameActivity extends AppCompatActivity {
         gameEngine.startGame();
     }
 
-    public static Intent newIntent(Context context) {
-        return new Intent(context, GameActivity.class);
+    @Override
+    protected void onPause() {
+        super.onPause();
+        gameEngine.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gameEngine.resume();
     }
 }
